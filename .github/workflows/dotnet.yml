@@ -2,11 +2,10 @@ name: Build and test
 
 on:
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
   push:
-    branches: [ main ]
-  workflow_dispatch:
-
+    branches: [ master ]
+ 
 jobs:
 
   check-code-formatting:
@@ -16,13 +15,12 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-      with:
-        fetch-depth: 1
+ 
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: 2.2.108
 
     - name: Install dotnet-format tool
       run: dotnet tool install -g dotnet-format
